@@ -16,6 +16,7 @@ model = keras.models.load_model(PATH + '/kill_cam.h5')
 
 #Writes all the kill frames into one folder 
 def write_compilation_frames(video_frames_path, compilation_frames_path, starting_index, threshold):
+    #Thanusun appa calling
     directory = os.listdir(video_frames_path)
     n = len(directory)
     frame_counter = 0
