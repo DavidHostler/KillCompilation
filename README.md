@@ -1,1 +1,11 @@
 # KillCompilation
+
+
+
+This project is geared towards generating a compilation of user kills in various videogames, given an input .mp4 twitch stream video. One convolutional neural network (CNN, in this case a Binary Classifier model) detects the presence of certain pre-programmed "kill indicators" as a probability falling between 0.0 and 1.0, and then a multilabel classifier model (also a CNN) does the task of determining what type of kill is being shown. If the conditional probability (P(Y1|Y2)) resulting from both predictions is sufficiently large, then we assume that a kill of a certain type has been detected. Based on this, we can offer users of the website based on this model the options to filter for kill clips of a certain type (or multiple types), or even just allow them to filter for any and all kills in general.
+
+For the time being, the design of this project is geared towards the first-person-shooter game Valorant. In the near future, I wish to add detection capabilities specifically trained for Call Of Duty, Halo, and Runescape if time allows. Additionally, requests have been made in regards to detecting "hype" moments (i.e. moments where the event in-game is so exciting that the streamer becomes extremely vocal). While some recommended procedures for this have entailed Transformer models, it seems sufficient for me to propose a simpler method for detecting moments of loudness by using Fourier transforms on the sound data and then searching for frequency intervals with lots of activity (i.e. a loud noise like somebody screaming in excitement after getting a 360 degree no-scope headshot).
+
+A number of individuals are behind this project so far. My role so far has been to implement a Binary Classifier and train the model, using basic regularization techniques (e.g. data augmentation, noise, dropout layers, etc.) to ensure a high-accuracy model with low variance and low bias. Additionally, I built the initial data extraction algorithms with OpenCV to preprocess the video frame data, as well as the scripts required to implement the ML model and write the frames involved in the kill compilation to the desired output video.
+
+Additional engineers are giving a hand to implement this logic on the front-end of the website, with my role having been described above in this fun project.
